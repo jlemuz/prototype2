@@ -1,6 +1,19 @@
 <main>
 
-  <form method="POST" action="/dashboard" enctype="multipart/form-data" class="login-form">
+  {{!-- <form class="new-post-form">
+    <div>
+      <label for="post-title">Title</label>
+      <input type="text" id="post-title" name="post-title" />
+    </div>
+    <div>
+      <label for="post-url">Link</label>
+      <input id="post-url" name="post-url" />
+    </div>
+    <button type="submit" class="btn">Create</button>
+  </form>
+</main> --}}
+
+<form method="POST" action="/dashboard" enctype="multipart/form-data" class="login-form">
 <div class="content">
   <h2>Upload New Image</h2>
   <div class="input-field"> <input  type="file" name="file" /> </div>
@@ -18,18 +31,13 @@
   <h2>Your Images</h2>
   <ul class="post-list">
   {{#each posts}}
-   <li>
-    <article class="login-form card">
+  <li>
+    <article class="post">
       <div class="title">
-          {{ title }}
       </div>
       <div class="meta">
-          <img src="data:image/png;base64,{{image}} " height="200px", length="200px"/>   
-      </div>
-      <div class="title">
-          {{ post_url }}
-      </div>
-
+  <img src="data:image/png;base64,{{image}}"/>  
+        </div>
     </article>
   </li>
   {{/each}}

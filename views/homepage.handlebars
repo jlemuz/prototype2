@@ -2,18 +2,13 @@
 
   <ul class="post-list">
     {{#each posts}}
-  <li>
-    <article class="login-form card">
+ <li>
+    <article class="post">
       <div class="title">
-          {{ title }}
       </div>
       <div class="meta">
-          <img src="data:image/png;base64,{{image}} " height="200px", length="200px"/>   
-      </div>
-      <div class="title">
-          {{ post_url }}
-      </div>
-
+  <img src="data:image/png;base64,{{image}}"/>  
+        </div>
     </article>
   </li>
   {{/each}}
