@@ -94,9 +94,9 @@ router.post('/', withAuth, async (req,res)=>{
     
 
       Post.create({
-        title: fileName,
+        title: req.body.title,
         // image: file.data
-        post_url: fileName,
+        post_url: req.body.description,
         user_id: req.session.user_id,
         image:img
       })
