@@ -363,3 +363,8 @@ footer {
 ul {
   list-style-type: none;
 }
+
+img {
+  width: 50%;
+  height: auto;
+}
