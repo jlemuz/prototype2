@@ -21,6 +21,7 @@ router.get('/', withAuth, (req, res) => {
       'created_at',
       'image'
     ],
+    order: [['created_at', 'DESC']],
     include: [
       {
         model: User,
