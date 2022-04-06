@@ -1,7 +1,7 @@
-<section>
+<main>
   <h2>Create New Post</h2>
 
-  <form class="new-post-form">
+  {{!-- <form class="new-post-form">
     <div>
       <label for="post-title">Title</label>
       <input type="text" id="post-title" name="post-title" />
@@ -12,17 +12,33 @@
     </div>
     <button type="submit" class="btn">Create</button>
   </form>
-</section>
+</main> --}}
 
-{{#if posts.length}}
+ <form method="POST" action="/dashboard" enctype="multipart/form-data">
+      <input type="file" name="file" />
+      <br>
+      <input type="submit" value="Upload"/>
+    </form>
+    <br>
+
+
+ {{#if posts.length}}
 <section>
   <h2>Your Posts</h2>
-  <ol>
-    {{#each posts as |post|}}
-    
-    {{/each}}
-  </ol>
+  <ul class="post-list">
+  {{#each posts}}
+  <li>
+    <article class="post">
+      <div class="title">
+      </div>
+      <div class="meta">
+  <img src="data:image/png;base64,{{image}} " height="200px", length="200px />        </div>
+    </article>
+  </li>
+  {{/each}}
+</ul>
 </section>
 {{/if}}
+</section>
 
 <script src="/javascript/add-post.js"></script>
