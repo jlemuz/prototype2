@@ -1,5 +1,4 @@
 <main>
-  <h2>Create New Post</h2>
 
   <form method="POST" action="/dashboard" enctype="multipart/form-data" class="login-form">
 <div class="content">
@@ -16,16 +15,21 @@
 
  {{#if posts.length}}
 <section>
-  <h2>Your Posts</h2>
+  <h2>Your Images</h2>
   <ul class="post-list">
   {{#each posts}}
-  <li>
-    <article class="post">
+   <li>
+    <article class="login-form card">
       <div class="title">
+          {{ title }}
       </div>
       <div class="meta">
-  <img src="data:image/png;base64,{{image}}"/>  
-        </div>
+          <img src="data:image/png;base64,{{image}} " height="200px", length="200px"/>   
+      </div>
+      <div class="title">
+          {{ post_url }}
+      </div>
+
     </article>
   </li>
   {{/each}}
