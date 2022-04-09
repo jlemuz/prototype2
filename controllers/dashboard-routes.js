@@ -9,7 +9,7 @@ const util = require("util");
 // get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
   console.log(req.session);
-  console.log('======================');
+  console.log('======================Get Images');
   Post.findAll({
     where: {
       user_id: req.session.user_id
@@ -72,7 +72,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
 });
 
 router.post('/', withAuth, async (req,res)=>{ 
-
+  console.log('======================Posting Image');
   try{
       const file = req.files.file;
       //console.log(file);
@@ -94,29 +94,46 @@ router.post('/', withAuth, async (req,res)=>{
     
 
       Post.create({
-        title: req.body.title,
+        title: fileName,
         // image: file.data
-        post_url: req.body.description,
+        post_url: fileName,
         user_id: req.session.user_id,
         image:img
       })
-        .then(dbPostData => res.json(dbPostData))
+        .then(()=>{res.redirect('/dashboard');})
         .catch(err => {
-          console.log(err);
+          console.log('error inside post.create', err);
           res.status(500).json(err);
         });
-        res.redirect('/dashboard');
-
       
       }
       catch(err){
-        console.log(err);
+        console.log('error in try catch',err);
         res.status(500).json({
             message: err,
         })
     }
 });
 
+router.delete('/:id', withAuth, (req, res) => {
+  console.log('id', req.params.id);
+  Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 
 module.exports = router;
